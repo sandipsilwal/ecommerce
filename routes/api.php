@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('/product','App\Http\Controllers\ApiControllers\ProductController');
+Route::group(['prefix'=>'product'], function(){
+    Route::apiResource('{product_id}/review','App\Http\Controllers\ApiControllers\ReviewController');
+
+});
